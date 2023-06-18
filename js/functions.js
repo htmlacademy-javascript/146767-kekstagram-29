@@ -8,8 +8,7 @@
 
 const checkedLengthString = (checkString, valideLength) => {
   checkString = String(checkString).length;
-  const collation = checkString <= valideLength;
-  return collation;
+  return checkString <= valideLength;
 };
 
 checkedLengthString(30, 20); // true - ожидаемые значения при вызове функции.
@@ -26,16 +25,14 @@ checkedLengthString('проверяемая строка', 10); // false
 
 const checkedPalindrome = (checkString) => {
 
-  const normalizedString = checkString.replaceAll(/ /g,'').toUpperCase();
+  const normalizedString = checkString.replaceAll(' ','').toUpperCase();
   let invertedString = '';
 
   for (let i = normalizedString.length; i > 0; i--) {
     invertedString += normalizedString[i - 1];
   }
 
-  const collation = invertedString === normalizedString;
-
-  return collation;
+  return invertedString === normalizedString;
 };
 
 checkedPalindrome('топот'); // true - ожидаемые значения при вызове функции.
