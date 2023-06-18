@@ -6,16 +6,13 @@
   и false, если строка длиннее.
 */
 
-function checkedLengthString (checkString, valideLength) {
-
+const checkedLengthString = (checkString, valideLength) => {
   checkString = String(checkString).length;
-
   const collation = checkString <= valideLength;
-
   return collation;
-}
+};
 
-checkedLengthString(30, 20); // true
+checkedLengthString(30, 20); // true - ожидаемые значения при вызове функции.
 checkedLengthString('проверяемая строка', 20); // true
 checkedLengthString('проверяемая строка', 18); // true
 checkedLengthString('проверяемая строка', 10); // false
@@ -27,7 +24,7 @@ checkedLengthString('проверяемая строка', 10); // false
   одинаково читаются и слева направо и справа налево.
 */
 
-function checkedPalindrome (checkString) {
+const checkedPalindrome = (checkString) => {
 
   const normalizedString = checkString.replaceAll(/ /g,'').toUpperCase();
   let invertedString = '';
@@ -39,9 +36,9 @@ function checkedPalindrome (checkString) {
   const collation = invertedString === normalizedString;
 
   return collation;
-}
+};
 
-checkedPalindrome('топот'); // true
+checkedPalindrome('топот'); // true - ожидаемые значения при вызове функции.
 checkedPalindrome('ДовОд'); // true
 checkedPalindrome('Кекс'); // false
 checkedPalindrome('Лёша на полке клопа нашёл '); // true
