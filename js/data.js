@@ -1,4 +1,4 @@
-import {getRandomInteger, getRandomArrayElement} from './util.js';
+import { getRandomInteger, getRandomArrayElement } from './util.js';
 
 const POSTS_COUNT = 25;
 const AVATARS_COUNT = 6;
@@ -43,29 +43,27 @@ const createMessage = () => Array.from(
 ).join(' ');
 
 const createComment = () => ({
-  id: generateCommentId(), // Любое число. Идентификаторы не должны повторяться.
-  avatar: `img/avatar-${getRandomInteger(1,AVATARS_COUNT)}.svg`, // строка, значение которой формируется по правилу img/avatar-{{случайное число от 1 до 6}}.svg.
-  message: createMessage(), //  Одно или два случайных предложения.
-  name: getRandomArrayElement(NAMES) // Случайное имя.
+  id: generateCommentId(),
+  avatar: `img/avatar-${getRandomInteger(1,AVATARS_COUNT)}.svg`,
+  message: createMessage(),
+  name: getRandomArrayElement(NAMES)
 });
 
 const createPosts = (index) => ({
-  id: index, // от 1 до 25. Идентификаторы не должны повторяться.
-  url: `photos/${index}.jpg`, // от 1 до 25. Адреса картинок не должны повторяться.
-  description: getRandomArrayElement(DESCRIPTIONS), // Случайная строка — описание фотографии.
-  likes: getRandomInteger(LIKE_MIN_COUNT,LIKE_MAX_COUNT), // Случайное число от 15 до 200.
-  comments: // Случайное число комментариев в посте от 0 до 30
+  id: index,
+  url: `photos/${index}.jpg`,
+  description: getRandomArrayElement(DESCRIPTIONS),
+  likes: getRandomInteger(LIKE_MIN_COUNT,LIKE_MAX_COUNT),
+  comments:
     Array.from(
       { length: getRandomInteger(0,COMMENTS_COUNT) },
       createComment,
     )
 });
 
-/* Функция для создания массива из 25 сгенерированных объектов.
-Каждый объект массива — описание фотографии, опубликованной пользователем. */
 const getPosts = () => Array.from(
   { length: POSTS_COUNT },
   (_item, postIndex) => createPosts(postIndex + 1),
 );
 
-export {getPosts};
+export { getPosts };
